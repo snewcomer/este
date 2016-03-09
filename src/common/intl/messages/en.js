@@ -8,7 +8,8 @@ export default {
       home: 'Home',
       login: 'Login',
       me: 'Me',
-      todos: 'Todos'
+      todos: 'Todos',
+      articles: 'Articles'
     }
   },
   auth: {
@@ -62,6 +63,9 @@ export default {
         'Performance and size of production build (<code>gulp -p</code>)'
       ]
     }
+  },
+  articles: {
+    title: 'Articles'
   },
   me: {
     title: 'Me',

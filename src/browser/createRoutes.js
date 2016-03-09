@@ -1,4 +1,5 @@
 import App from './app/App.react';
+import Articles from './articles/Page.react';
 import Auth from './auth/Page.react';
 import Firebase from './firebase/Page.react';
 import Home from './home/Page.react';
@@ -31,6 +32,7 @@ export default function createRoutes(getState) {
         <Route component={Settings} path="settings" />
       </Route>
       <Route component={Todos} path="todos" />
+      <Route component={Articles} path="articles" />
       <Route component={NotFound} path="*" />
     </Route>
   );

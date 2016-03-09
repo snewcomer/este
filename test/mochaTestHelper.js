@@ -4,10 +4,12 @@ import React from 'react';
 import sinon from 'sinon';
 import sinonAsPromised from 'sinon-as-promised';
 import sinonChai from 'sinon-chai';
+import chaiImmutable from 'chai-immutable';
 import TestUtils from 'react-addons-test-utils';
 
 chai.should();
 chai.use(sinonChai);
+chai.use(chaiImmutable);
 
 // Use Bluebird Promises inside of sinon stubs.
 // Bluebird has better error reporting for unhandled Promises.
