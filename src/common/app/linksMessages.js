@@ -24,5 +24,13 @@ export default defineMessages({
   todos: {
     defaultMessage: 'Todos',
     id: 'app.links.todos'
+  },
+  articles: {
+    defaultMessage: 'Articles',
+    id: 'app.links.articles'
+  },
+  newArticle: {
+      defaultMessage: 'New Article',
+      id: 'app.links.articles.new'
   }
 });

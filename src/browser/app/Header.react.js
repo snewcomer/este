@@ -42,6 +42,11 @@ class Header extends Component {
               <FormattedMessage {...linksMessages.me} />
             </Link>
           </li>
+          <li>
+            <Link activeClassName="active" to="/articles">
+              <FormattedMessage {...linksMessages.articles} />
+            </Link>
+          </li>
           {!viewer &&
             <li>
               <Link activeClassName="active" to="/login">
