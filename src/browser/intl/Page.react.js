@@ -1,18 +1,16 @@
 import Component from 'react-pure-render/component';
 import Helmet from 'react-helmet';
+import Locales from './Locales.react';
 import React from 'react';
-import * as reactIntl from 'react-intl';
-
-const {
+import {
   FormattedDate,
   FormattedMessage,
   FormattedNumber,
-  FormattedPlural,
   FormattedRelative,
   defineMessages,
   injectIntl,
   intlShape
-} = reactIntl;
+} from 'react-intl';
 
 const messages = defineMessages({
   h2: {
@@ -22,6 +20,13 @@ const messages = defineMessages({
   title: {
     defaultMessage: 'Intl',
     id: 'intl.page.title'
+  },
+  unreadCount: {
+    defaultMessage: `{unreadCount, plural,
+      one {message}
+      other {messages}
+    }`,
+    id: 'intl.page.unreadCount'
   }
 });
 
@@ -31,10 +36,16 @@ class Page extends Component {
     intl: intlShape.isRequired
   };
 
+  constructor(props) {
+    super(props);
+    this.componentRenderedAt = Date.now();
+  }
+
   render() {
     const { intl } = this.props;
     const title = intl.formatMessage(messages.title);
-    const unreadCount = 42007;
+    // To remember beloved −123 min. https://www.youtube.com/watch?v=VKOv1I8zKso
+    const unreadCount = 123;
 
     return (
       <div className="intl-page">
@@ -42,6 +53,7 @@ class Page extends Component {
         <h2>
           <FormattedMessage {...messages.h2} />
         </h2>
+        <Locales />
         <p>
           <FormattedDate
             value={Date.now()}
@@ -50,15 +62,12 @@ class Page extends Component {
         </p>
         <p>
           <FormattedNumber value={unreadCount} /> {' '}
-          <FormattedPlural value={unreadCount}
-            one="message"
-            other="messages"
-          />
+          <FormattedMessage {...messages.unreadCount} values={{ unreadCount }} />
         </p>
         <p>
           <FormattedRelative
-            value={Date.now()}
-            updateInterval={1000 * 5}
+            updateInterval={1000 * 1}
+            value={this.componentRenderedAt}
           />
         </p>
       </div>
