@@ -2,9 +2,12 @@ import mongoose from 'mongoose';
 
 const ArticleSchema = new mongoose.Schema({
   id: String,
-  text: String,
+  title: String,
+  body: String,
+  author: String,
+  comments: [{ body: String, date: Date }],
   count: { type: Number, min: 0 },
-  date: { type: Date, default: Date.now }
+  createdAt: { type: Date, default: Date.now }
 });
 
 // Compiles the schema into a model, opening (or creating, if

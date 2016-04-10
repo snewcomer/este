@@ -4,7 +4,10 @@
 
 module.exports = {
   // Find the appropriate database to connect to, default to localhost if not found.
-  db: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://localhost/base-react',
+  db: {
+    test: 'mongodb://localhost/test-base-react',
+    dev: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://localhost/base-react',
+  },
   sessionSecret: process.env.SESSION_SECRET || 'Your Session Secret goes here',
   google: {
     clientID: process.env.GOOGLE_CLIENTID || 
