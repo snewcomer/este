@@ -1,9 +1,11 @@
 import App from './app/App.react';
 import Articles from './articles/Page.react';
+import AllArticles from './articles/Articles.react';
 import NewArticle from './articles/NewArticle.react';
 import Auth from './auth/Page.react';
 import Firebase from './firebase/Page.react';
 import Home from './home/Page.react';
+import HomeMain from './home_main/Page.react';
 import Intl from './intl/Page.react';
 import Me from './me/Page.react';
 import NotFound from './notfound/Page.react';
@@ -35,7 +37,8 @@ export default function createRoutes(getState) {
         <Route component={Settings} path="settings" />
       </Route>
       <Route component={Todos} path="todos" />
-      <Route component={Articles} path="articles" >
+      <Route component={HomeMain} path="dashboard">
+        <Route component={Articles} path="articles" />
         <Route component={NewArticle} path="new" />
       </Route>
       <Route component={NotFound} path="*" />

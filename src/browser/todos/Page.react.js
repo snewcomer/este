@@ -32,7 +32,6 @@ class Page extends Component {
       </div>
     );
   }
-
 }
 
 export default injectIntl(Page);

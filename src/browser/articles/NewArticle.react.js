@@ -2,7 +2,6 @@ import Component from 'react-pure-render/component';
 import Helmet from 'react-helmet';
 import * as todosActions from '../../common/todos/actions';
 import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
 import { FormattedMessage, FormattedHTMLMessage, defineMessages, injectIntl, intlShape } from 'react-intl';
 
 const messages = defineMessages({

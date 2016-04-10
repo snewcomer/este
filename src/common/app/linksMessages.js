@@ -32,5 +32,9 @@ export default defineMessages({
   newArticle: {
       defaultMessage: 'New Article',
       id: 'app.links.articles.new'
+  },
+  allArticles: {
+      defaultMessage: 'All Articles',
+      id: 'app.links.articles.all'
   }
 });
