@@ -3,7 +3,9 @@ import { Record } from 'immutable';
 const Article = Record({
   createdAt: null,
   id: '',
-  title: ''
+  title: '',
+  body: '',
+  author: ''
 });
 
 export default Article;

@@ -10,7 +10,7 @@ describe('Reducer::Article', () => {
     expect(newState.articles).to.eql(Map());
   });
   it('returns a state with many articles when state is undefined', () => {
-    const action = { type: LOADED_ARTICLES, response: [ {'id': '2', 'title': 'Wat is good' }] };
+    const action = { type: LOADED_ARTICLES, response: [{'id': '2', 'title': 'Wat is good' }] };
     const newState = articleReducer(undefined, action);
     expect(newState.articles.get('2')['id']).to.eql('2');
     expect(newState.articles.get('2')['title']).to.eql('Wat is good');
