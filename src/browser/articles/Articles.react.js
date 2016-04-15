@@ -16,11 +16,8 @@ const messages = defineMessages({
 export class Articles extends Component {
 
   static PropTypes = {
-    todos: PropTypes.object.isRequired,
+    loadArticles: PropTypes.func.isRequired
   };
-  static fetchData({store}) {
-    return store.dispatch(loadArticles());
-  }
 
   componentDidMount() {
     this.props.loadArticles();
@@ -28,15 +25,16 @@ export class Articles extends Component {
 
   render(){
     const { articles } = this.props;
-    const list = articles.toList().sortBy(item => item.createdAt).reverse();
+    // const list = articles.toList().sortBy(item => item.createdAt).reverse();
 
+        // {list.map(article =>
+        //   <Article 
+        //     article={article} 
+        //   />
+        // )}
     return (
       <ol className="articles">
-        {list.map(article =>
-          <Article 
-            article={article} 
-          />
-        )}
+        <h2>FUCK</h2>
       </ol>
     );
   }
