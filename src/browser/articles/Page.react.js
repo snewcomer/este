@@ -1,6 +1,6 @@
 import Component from 'react-pure-render/component';
 import Helmet from 'react-helmet';
-import { Articles } from './Articles.react';
+import Articles from './Articles.react';
 import React, { PropTypes } from 'react'; 
 import { FormattedHTMLMessage, defineMessages, injectIntl, intlShape } from 'react-intl';
 

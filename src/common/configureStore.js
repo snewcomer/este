@@ -2,6 +2,7 @@ import Firebase from 'firebase';
 import appReducer from './app/reducer';
 import createLogger from 'redux-logger';
 import isomorphicFetch from 'isomorphic-fetch';
+import Async from './middleware/async';
 import promiseMiddleware from 'redux-promise-middleware';
 import shortid from 'shortid';
 import storageDebounce from 'redux-storage-decorator-debounce';
@@ -48,6 +49,7 @@ export default function configureStore(options) {
   // });
 
   const middleware = [
+    Async,
     ...platformMiddleware,
     injectMiddleware({
       ...platformDeps,

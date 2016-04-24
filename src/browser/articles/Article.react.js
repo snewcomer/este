@@ -3,19 +3,20 @@ import Helmet from 'react-helmet';
 import React, { PropTypes } from 'react';
 import { FormattedMessage, FormattedHTMLMessage, defineMessages, injectIntl, intlShape } from 'react-intl';
 
-class Article extends Component {
+export default class Article extends Component {
 
   static PropTypes = {
-    articles: PropTypes.object.isRequired,
+    article: PropTypes.object.isRequired,
   };
 
   render() {
     const { article } = this.props;
     return(
-      <h2>{article.name}</h2>
+      <div className="article-single">
+        <h2 className="article-title">{article.title}</h2>
+        <p className="article-body">{article.body}</p>
+        <span className="article-createdAt">{article.createdAt}</span>
+      </div>
     )
   }
 }
-
-export default injectIntl(Article);
-

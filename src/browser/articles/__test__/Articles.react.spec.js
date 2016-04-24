@@ -25,5 +25,6 @@ describe('Articles', () => {
       />
     );
     expect(wrapper.find(Article).length).equal(articleList.size);
+    expect(wrapper.find('.articles-container').length).to.equal(1);
   });
 });

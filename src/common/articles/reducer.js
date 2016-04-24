@@ -8,19 +8,24 @@ const InitialState = Record({
 const initialState = new InitialState;
 
 // Note how JSON from server is revived to immutable record.
-const revive = ({ articles }) => initialState.merge({
-  articles: Map(articles).articles(article => new Article(article))
-});
+const revive = ({ articles }) => {
+  return initialState.merge({articles: Map(articles).map(article => new Article(article)) });
+}
 
 export default function articlesReducer(state = initialState, action) {
-  if (!(state instanceof InitialState)) return revive(state);
-
+  if (!(state instanceof InitialState)) {
+    return revive(state);
+  }
   switch (action.type) {
     case actions.LOADED_ARTICLES: {
-      const articles = action.response.reduce((articles, json) => {
-        return articles.set(json.id, new Article(json)) ;
+      const articles = action.payload;
+      const articleList = articles.reduce((articles, json) => {
+        return articles.set(json._id, new Article(json)) ;
       }, Map());
-      return state.update('articles', cb => articles.merge(cb));
+      var newState = state.update('articles', (articles) => {
+        return articles.merge(articleList)
+      });
+      return newState;
     }
   }
   return state;

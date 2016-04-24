@@ -25,23 +25,19 @@ export class Articles extends Component {
 
   render(){
     const { articles } = this.props;
-    // const list = articles.toList().sortBy(item => item.createdAt).reverse();
-
-        // {list.map(article =>
-        //   <Article 
-        //     article={article} 
-        //   />
-        // )}
+    const list = articles.toList().sortBy(item => item.createdAt).reverse();
     return (
-      <ol className="articles">
-        <h2>FUCK</h2>
-      </ol>
+      <div className="articles-container">
+        {list.map(article =>
+          <Article article={article} />
+        )}
+      </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  return { articles: state.articles };
+  return { articles: state.articles.articles };
 };
 
 export default connect(mapStateToProps, { loadArticles })(Articles);

@@ -1,6 +1,5 @@
 import App from './app/App.react';
 import Articles from './articles/Page.react';
-import AllArticles from './articles/Articles.react';
 import NewArticle from './articles/NewArticle.react';
 import Auth from './auth/Page.react';
 import Firebase from './firebase/Page.react';

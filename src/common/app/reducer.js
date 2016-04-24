@@ -9,6 +9,7 @@ import intl from '../intl/reducer';
 import todos from '../todos/reducer';
 import ui from '../ui/reducer';
 import users from '../users/reducer';
+import articles from '../articles/reducer';
 
 export default combineReducers({
   auth,
@@ -19,5 +20,6 @@ export default combineReducers({
   routing,
   todos,
   ui,
-  users
+  users,
+  articles
 });

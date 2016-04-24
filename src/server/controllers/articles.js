@@ -6,9 +6,9 @@ const Article = mongoose.model('Article');
  * List
  */
 exports.all = function (req, res) {
-  Article.find({}).exec(function(err, articles) {
+  Article.find({}).exec((err, articles) => {
     if (!err) {
-      res.json(articles);
+      res.status(200).json(articles).end();
     } else {
       console.log('Error in first query');
     }
