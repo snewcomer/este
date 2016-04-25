@@ -1,4 +1,4 @@
-import './App.scss';
+import './AppPage.scss';
 import Component from 'react-pure-render/component';
 import Footer from './Footer.react';
 import FooterMain from './FooterMain.react';
@@ -22,7 +22,7 @@ const bootstrap4Metas = [
   }
 ];
 
-class Page extends Component {
+class AppPage extends Component {
 
   static propTypes = {
     children: PropTypes.object.isRequired,
@@ -60,8 +60,8 @@ class Page extends Component {
 
 }
 
-Page = start(Page);
+AppPage = start(AppPage);
 
 export default connect(state => ({
   currentLocale: state.intl.currentLocale
-}))(Page);
+}))(AppPage);
