@@ -1,4 +1,4 @@
-import App from './app/Page.react';
+import App from './app/AppPage.react';
 import Auth from './auth/AuthPage.react';
 import Articles from './articles/Page.react';
 import NewArticle from './articles/NewArticle.react';
