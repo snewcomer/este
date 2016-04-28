@@ -29,7 +29,7 @@ export class Articles extends Component {
     return (
       <div className="articles-container">
         {list.map(article =>
-          <Article article={article} />
+          <Article article={article} key={article._id} />
         )}
       </div>
     );
