@@ -6,7 +6,7 @@ import { spy } from 'sinon';
 
 describe('Article', () => {
   const articleDefaultProps = {
-    article: { id: 1, title: 'It is an article', body: 'this body' },
+    article: { _id: 1, title: 'It is an article', body: 'this body' },
     // toggleArticleCompleted: () => {},
   };
 
@@ -30,9 +30,9 @@ describe('Article', () => {
     expect(wrapper.find('.article-body').text()).to.equal('this body');
     expect(wrapper.find('.article-createdAt').length).to.equal(1);
 
-    // expect(Article.componentDidMount.calledOnce).to.equal(true);
+    // expect(Article.componentD_idMount.calledOnce).to.equal(true);
     // expect(deleteArticleSpy.calledOnce).equal(true);
-    // expect(deleteArticleSpy.firstCall.args[0]).equal(articleDefaultProps.article.id);
+    // expect(deleteArticleSpy.firstCall.args[0]).equal(articleDefaultProps.article._id);
   });
 });
 

@@ -8,5 +8,8 @@ router.route('/all')
   .get(articles.all)
   .post(articles.add);
 
+router.route('/:id')
+  .get(articles.main)
+
 export default router;
 

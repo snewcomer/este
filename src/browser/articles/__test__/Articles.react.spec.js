@@ -9,12 +9,12 @@ describe('Articles', () => {
   it('should render an Article item per article', () => {
     const articleList = Map({
       1: {
-        id: 1,
+        _id: 1,
         title: 'Article One',
         body: 'Article\'s are cool',
       },
       2: {
-        id: 6,
+        _id: 6,
         title: 'Article Two',
         body: 'Article\'s are awesome',
       }

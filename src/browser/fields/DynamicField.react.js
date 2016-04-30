@@ -1,9 +1,6 @@
 import Component from 'react-pure-render/component';
 import React, { PropTypes } from 'react';
-<<<<<<< HEAD
-=======
 import classnames from 'classnames';
->>>>>>> 37f3a96510e99729db406c3300e95606ff1524ee
 import { fields } from '../../common/lib/redux-fields';
 
 class DynamicField extends Component {

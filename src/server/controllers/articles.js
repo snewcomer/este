@@ -27,3 +27,16 @@ exports.add = function (req, res) {
     res.status(200).send('OK');
   });
 };
+
+/**
+ * Main
+ */
+exports.main = function (req, res) {
+  Article.findOne({}).exec((err, article) => {
+    if (!err) {
+      res.status(200).json(article).end();
+    } else {
+      console.log('Error in first query');
+    }
+  });
+};

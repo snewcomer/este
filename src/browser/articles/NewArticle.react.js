@@ -12,19 +12,19 @@ const messages = defineMessages({
 });
 
 class NewArticle extends Component {
-    static PropTypes = {
-        intl: intlShape.isRequired,
-    };
-    render(){
-      const { intl } = this.props;
-      const title = intl.formatMessage(messages.title);
-      return (
-        <div className="articles-new-page">
-          <Helmet title={title} />
-            <h1>WAT</h1>
-        </div>
-      )
-    }
+  static PropTypes = {
+    intl: intlShape.isRequired,
+  };
+  render(){
+    const { intl } = this.props;
+    const title = intl.formatMessage(messages.title);
+    return (
+      <div className="articles-new-page">
+      <Helmet title={title} />
+      <h1>WAT</h1>
+      </div>
+    )
+  }
 }
 
 export default injectIntl(NewArticle);

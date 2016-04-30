@@ -2,7 +2,10 @@ import { expect } from 'chai';
 import utils from './utils';
 import should from 'should';
 import Article from '../article';
-
+/*
+ * mongod
+ * npm test
+ */
 describe('Articles: models', () => {
   describe('#create', () => {
     it('should create a new Article', (done) => {
@@ -14,6 +17,7 @@ describe('Articles: models', () => {
         body: body, 
         title: 'A long movie', 
         author: author, 
+        hot: true, 
         comments: comments, 
         createdAt: created,
       };
@@ -25,6 +29,7 @@ describe('Articles: models', () => {
         expect(createdArticle.comments[0]['body']).to.eql('wat');
         expect(createdArticle.comments[0]['date']).to.eql(created);
         expect(createdArticle.createdAt).to.equal(created);
+        expect(createdArticle.hot).to.equal(true);
         done();
       });
     });

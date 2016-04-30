@@ -13,9 +13,9 @@ export default class Article extends Component {
     const { article } = this.props;
     return(
       <div className="article-single">
+        <span className="article-createdAt">{article.createdAt}</span>
         <h2 className="article-title">{article.title}</h2>
         <p className="article-body">{article.body}</p>
-        <span className="article-createdAt">{article.createdAt}</span>
       </div>
     )
   }
