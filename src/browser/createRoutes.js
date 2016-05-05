@@ -29,7 +29,6 @@ export default function createRoutes(getState) {
 
   return (
     <Route component={App} path="/">
-      <IndexRoute component={Home} />
       <Route component={Auth} path="login" />
       <Route component={Intl} path="intl" />
       <Route component={Fields} path="fields" />

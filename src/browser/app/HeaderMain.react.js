@@ -1,3 +1,4 @@
+import './HeaderMain.scss';
 import Component from 'react-pure-render/component';
 import React, { PropTypes } from 'react';
 import linksMessages from '../../common/app/linksMessages';
@@ -15,22 +16,22 @@ class Header extends Component {
     const { viewer } = this.props;
 
     return (
-      <header>
-        <h1>
-          <Link to="/">
+      <nav className="nav-main">
+        <h1 className="header-title">
+          <Link className="header-link" to="/">
             <FormattedMessage {...linksMessages.home} />
           </Link>
         </h1>
-        <ul>
+        <ul className="menu-items">
           {!viewer &&
-            <li>
-              <Link activeClassName="active" to="/login">
+            <li className="menu-item">
+              <Link className="login" activeClassName="active" to="/login">
                 <FormattedMessage {...linksMessages.login} />
               </Link>
             </li>
           }
         </ul>
-      </header>
+      </nav>
     );
   }
 

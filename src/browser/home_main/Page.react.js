@@ -1,3 +1,4 @@
+import './Page.scss';
 import Component from 'react-pure-render/component';
 import Helmet from 'react-helmet';
 import React, { PropTypes } from 'react';
@@ -6,14 +7,6 @@ import { FormattedMessage, FormattedHTMLMessage, defineMessages, injectIntl, int
 import { Link } from 'react-router';
 
 const messages = defineMessages({
-  intro: {
-    defaultMessage: `
-      <p>
-        Top Container for Article app
-      </p>
-    `,
-    id: 'home.intro'
-  },
   title: {
     defaultMessage: 'Home',
     id: 'home.title'
@@ -34,13 +27,6 @@ class Page extends Component {
     return (
       <div className="home-page">
         <Helmet title={title} />
-        <FormattedHTMLMessage {...messages.intro} />
-        <Link activeClassName="active" to="/dashboard/articles">
-          <FormattedMessage {...linksMessages.allArticles} />
-        </Link>
-        <Link activeClassName="active" to="/dashboard/new">
-          <FormattedMessage {...linksMessages.newArticle} />
-        </Link>
         {children}
         {/* Use require for assets. It's super useful for CDN. */}
       </div>

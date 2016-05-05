@@ -1,0 +1,21 @@
+.nav-main {
+  width: 100%;
+  padding: 1rem;
+  margin: 1rem 0;
+  border: 0 0 1px 0 solid black;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2);
+  .header-title {
+    display: inline;
+  }
+  .header-link {
+    font-size: .75em;
+  }
+  .menu-items {
+    float: right;
+    .menu-item {
+      list-style: none;
+      .login {
+      }
+    }
+  }
+}

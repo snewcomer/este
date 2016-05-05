@@ -1,0 +1,20 @@
+.article-title {
+  font-family: RobotoDraft, Roboto, sans-serif;
+  font-size: 34px;
+  line-height: 40px;
+  color: #00BCD4;
+  position: block;
+}
+
+.article-createdAt {
+  font-size: 1em;
+  color: #5F667F;
+}
+
+section.article-body {
+  padding: 1rem 0;
+  p {
+    line-height: 25px;
+    margin: 0 auto;
+  }
+}
