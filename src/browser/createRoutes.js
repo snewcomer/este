@@ -2,7 +2,7 @@ import Articles from './articles/Articles.react';
 import MainArticle from './articles/Page.react';
 import NewArticle from './articles/NewArticle.react';
 import HomeMain from './home_main/Page.react';
-import App from './app/AppPage.react';
+import App from './app/App.react';
 import Auth from './auth/AuthPage.react';
 import Fields from './fields/FieldsPage.react';
 import Firebase from './firebase/FirebasePage.react';
