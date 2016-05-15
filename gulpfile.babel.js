@@ -1,5 +1,6 @@
 /* eslint-disable no-undef, no-console */
 import bg from 'gulp-bg';
+import childProcess, { execSync } from 'child_process';
 import del from 'del';
 import eslint from 'gulp-eslint';
 import fs from 'fs';
@@ -8,7 +9,6 @@ import gulpIf from 'gulp-if';
 import mochaRunCreator from './test/mochaRunCreator';
 import path from 'path';
 import runSequence from 'run-sequence';
-import shell from 'gulp-shell';
 import webpackBuild from './webpack/build';
 import yargs from 'yargs';
 
@@ -32,7 +32,14 @@ const runEslint = () => {
 
 gulp.task('env', () => {
   process.env.NODE_ENV = args.production ? 'production' : 'development';
+  // The app is not a library, so it doesn't make sense to use semver.
+  // Este uses appVersion for crash reporting to match bad builds easily.
+  const gitIsAvailable = !process.env.SOURCE_VERSION; // Heroku detection.
+  if (gitIsAvailable) {
+    process.env.appVersion = execSync('git rev-parse HEAD').toString().trim();
+  }
 });
+
 
 gulp.task('clean', () => del('build/*'));
 
@@ -63,11 +70,17 @@ gulp.task('test', done => {
 
 gulp.task('server-node', bg('node', './src/server'));
 gulp.task('server-hot', bg('node', './webpack/server'));
-// Shell fixes Windows este/issues/522, bg is still needed for server-hot.
-gulp.task('server-nodemon', shell.task(
-  // Normalize makes path cross platform.
-  path.normalize('node_modules/.bin/nodemon --ignore webpack-assets.json src/server')
-));
+
+gulp.task(
+  'server-nodemon',
+  bg(
+    path.normalize('node_modules/.bin/nodemon'),
+    '--ignore',
+    'webpack-assets.json',
+    path.normalize('src/server')
+  )
+);
+
 gulp.task('server', ['env'], done => {
   if (args.production) {
     runSequence('clean', 'build', 'server-node', done);
@@ -199,9 +212,11 @@ gulp.task('bare', () => {
 });
 
 // An example of deploy to Firebase static hosting.
-gulp.task('deploy', ['to-html'], shell.task([
-  'firebase deploy'
-]));
+gulp.task('deploy', ['to-html'], (cb) => {
+  // I don't know any better way how to run a simple shell task:
+  // http://stackoverflow.com/questions/37187069/how-to-easily-run-system-shell-task-command-in-gulp
+  childProcess.spawn('firebase', ['deploy'], { stdio: 'inherit' }).on('close', cb);
+});
 
 gulp.task('extractMessages', () => {
   const through = require('through2');

@@ -18,6 +18,8 @@ import { IndexRoute, Route } from 'react-router';
 
 export default function createRoutes(getState) {
   const requireAuth = (nextState, replace) => {
+    // Note how we can read anything from the global app state safely, because
+    // the app state is an immutable value.
     const loggedInUser = getState().users.viewer;
     if (!loggedInUser) {
       replace({
