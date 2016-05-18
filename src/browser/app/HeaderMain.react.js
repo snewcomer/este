@@ -25,8 +25,15 @@ class Header extends Component {
         <ul className="menu-items">
           {!viewer &&
             <li className="menu-item">
-              <Link className="login" activeClassName="active" to="/login">
+              <Link className="login" activeClassName="active" to="/dashboard/login">
                 <FormattedMessage {...linksMessages.login} />
+              </Link>
+            </li>
+          }
+          {viewer &&
+            <li className="menu-item">
+              <Link className="logout" activeClassName="active" to="/dashboard/logout">
+                <FormattedMessage {...linksMessages.logout} />
               </Link>
             </li>
           }
