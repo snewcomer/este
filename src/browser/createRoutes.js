@@ -2,6 +2,7 @@ import Articles from './articles/Articles.react';
 import MainArticle from './articles/Page.react';
 import NewArticle from './articles/NewArticle.react';
 import HomeMain from './home_main/Page.react';
+import AuthMain from './auth_main/AuthPage.react';
 import App from './app/App.react';
 import Auth from './auth/AuthPage.react';
 import Fields from './fields/FieldsPage.react';
@@ -44,6 +45,7 @@ export default function createRoutes(getState) {
         <IndexRoute component={MainArticle} />
         <Route component={Articles} path="articles" />
         <Route component={NewArticle} path="new" />
+        <Route component={AuthMain} path="login" />
       </Route>
       <Route component={NotFound} path="*" />
     </Route>

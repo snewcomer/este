@@ -17,6 +17,7 @@ export default class Html extends Component {
         href={appCssFilename}
         rel="stylesheet"
       />;
+    const bootstrap = <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css" />;
     const analytics = isProduction && googleAnalyticsId !== 'UA-XXXXXXX-X' &&
       <script
         dangerouslySetInnerHTML={{ __html: `
@@ -36,6 +37,7 @@ ga('create', '${googleAnalyticsId}', 'auto'); ga('send', 'pageview');` }}
           {helmet.link.toComponent()}
           {helmet.script.toComponent()}
           {linkStyles}
+          {bootstrap}
           {analytics}
         </head>
         <body dangerouslySetInnerHTML={{ __html: bodyHtml }} />

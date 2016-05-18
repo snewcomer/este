@@ -63,34 +63,34 @@ body {
     }
   }
 
-  button {
-    background-color: #6496c8;
-    border: 0;
-    border-radius: 1em;
-    color: #fff;
-    font-weight: bold;
-    line-height: 1.8;
-    margin: 0 10px 0 0;
-    padding: 0 1em;
-    text-shadow: -1px 1px #417cb8;
+  // button {
+  //   background-color: #6496c8;
+  //   border: 0;
+  //   border-radius: 1em;
+  //   color: #fff;
+  //   font-weight: bold;
+  //   line-height: 1.8;
+  //   margin: 0 10px 0 0;
+  //   padding: 0 1em;
+  //   text-shadow: -1px 1px #417cb8;
 
-    &:hover {
-      background-color: #346392;
-      text-shadow: -1px 1px #27496d;
-    }
+  //   &:hover {
+  //     background-color: #346392;
+  //     text-shadow: -1px 1px #27496d;
+  //   }
 
-    &:active {
-      background-color: #27496d;
-      text-shadow: -1px 1px #193047;
-    }
+  //   &:active {
+  //     background-color: #27496d;
+  //     text-shadow: -1px 1px #193047;
+  //   }
 
-    &[disabled] {
-      background-color: #6496c8;
-      opacity: .5;
-      text-shadow: -1px 1px #417cb8;
-    }
+  //   &[disabled] {
+  //     background-color: #6496c8;
+  //     opacity: .5;
+  //     text-shadow: -1px 1px #417cb8;
+  //   }
 
-  }
+  // }
 
   button,
   input,
