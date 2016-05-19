@@ -20,6 +20,7 @@ nconf.defaults({
   locales: ['cs', 'de', 'en', 'es', 'fr', 'pt', 'ro'],
   port: process.env.PORT || 8000,
   sentryUrl: 'https://f297cec9c9654088b8ccf1ea9136c458@app.getsentry.com/77415',
+  secret: 'w;lkfja;lfkjasd;flkjasdf',
 });
 
 export default nconf.get();

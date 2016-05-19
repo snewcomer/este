@@ -9,7 +9,7 @@ import { browserHistory, locationShape } from 'react-router';
 import { connect } from 'react-redux';
 import { fields } from '../../common/lib/redux-fields';
 import { focusInvalidField } from '../../common/lib/validation';
-import { login } from '../../common/auth/actions';
+import { login } from '../../common/auth_main/actions';
 import { Button } from 'react-bootstrap';
 
 const messages = defineMessages({
@@ -48,7 +48,7 @@ class Login extends Component {
 
   async onFormSubmit(e) {
     e.preventDefault();
-    const { login, fields } = this.props;
+    const { handleSubmit, fields: { email, password } } = this.props;
     try {
       await login(fields.$values());
     } catch (error) {
@@ -71,7 +71,7 @@ class Login extends Component {
     // const passwordPlaceholder = intl.formatMessage(messages.passwordPlaceholder);
 
     return (
-      <form onSubmit={handleSubmit(this.onFormSubmit.bind(this))}>
+      <form onSubmit={this.onFormSubmit}>
         <fieldset className="form-group">
           <label>Email:</label>
           <input {...email} className="form-control" />
