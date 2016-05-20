@@ -41,21 +41,19 @@ class Login extends Component {
     login: PropTypes.func.isRequired
   };
 
-  // constructor(props) {
-  //   super(props);
-  //   this.onFormSubmit = this.onFormSubmit.bind(this);
-  // }
+  constructor(props) {
+    super(props);
+    this.onFormSubmit = this.onFormSubmit.bind(this);
+  }
 
-  async onFormSubmit(e) {
-    e.preventDefault();
-    const { handleSubmit, fields: { email, password } } = this.props;
+  async onFormSubmit({email, password}) {
     try {
-      await login(fields.$values());
+      await login({email, password});
     } catch (error) {
       focusInvalidField(this, error.reason);
       throw error;
     }
-    this.redirectAfterLogin();
+    // this.redirectAfterLogin();
   }
 
   // redirectAfterLogin() {
@@ -71,7 +69,7 @@ class Login extends Component {
     // const passwordPlaceholder = intl.formatMessage(messages.passwordPlaceholder);
 
     return (
-      <form onSubmit={this.onFormSubmit}>
+      <form onSubmit={handleSubmit(this.onFormSubmit)}>
         <fieldset className="form-group">
           <label>Email:</label>
           <input {...email} className="form-control" />
@@ -81,7 +79,7 @@ class Login extends Component {
           <input type="password" {...password} className="form-control" />
         </fieldset>
         <br />
-        <Button bsStyle="info">
+        <Button type="submit" bsStyle="info">
           <FormattedMessage {...buttonsMessages.login} />
         </Button>
       </form>

@@ -3,8 +3,7 @@ import users from '../controllers/authentication';
 
 const router = express.Router();
 
-router.route('/login')
-  .post(users.login);
-
+router.route('/')
+  .post(users.signup);
 
 export default router;

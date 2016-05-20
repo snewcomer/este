@@ -13,3 +13,26 @@ exports.login = function(req, res, next) {
   res.send({ token: tokenForUser(req.user) });
 }
 
+//request piped to here
+exports.signup = function(req, res, next){
+  const email = req.body.email;
+  const password = req.body.password;
+  if(!email || !password) {
+    return res.status(422).send({ error: 'You must supply email or password'});
+  }
+  User.findOne({ email: email }, function(err, existingUser) {
+    if(err){ return next(err); } 
+    if(existingUser) {
+      return res.status(422).send({ error: 'Email is in use'});
+    }
+    const user = new User({//in memeory db record
+      email: email,
+      password: password
+    });
+    user.save(function(err) {
+      if(err) { return next(err); }
+      res.json({token: tokenForUser(user)});
+    });
+  });
+}
+

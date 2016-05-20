@@ -5,6 +5,7 @@ export const LOADED_ARTICLES = 'LOADED_ARTICLES';
 export const LOADED_MAIN_ARTICLE = 'LOADED_MAIN_ARTICLE';
 
 export function loadArticles() {
+  /* Not using thunk like middleware because doesnt refire component */
   const getPromise = async () => {
     try {
       const response = await isomorphicFetch('/api/articles/all', {
