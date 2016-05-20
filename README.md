@@ -19,7 +19,7 @@
 - Truly universal architecture
   - code shared across platforms (browser, server, native mobile)
   - server side rendering
-  - universal data fetching (unique approach without react-router) 
+  - universal data fetching (unique approach without react-router)
   - an optional rendering to HTML files (for static hostings)
   - universal internationalization with runtime language switching
   - universal crash reporting via Sentry
@@ -32,11 +32,11 @@
   - useful predefined actions
   - email and facebook login
   - declarative queryFirebase higher order component for Firebase imperative api
-- Este is monorepo, [read](https://github.com/babel/babel/blob/master/doc/design/monorepo.md) [why](http://danluu.com/monorepo/). 
+- Este is monorepo, [read](https://github.com/babel/babel/blob/master/doc/design/monorepo.md) [why](http://danluu.com/monorepo/).
 
 ## Libraries
 
-- [react](http://facebook.github.io/react/) and [react native](https://facebook.github.io/react-native/) 
+- [react](http://facebook.github.io/react/) and [react native](https://facebook.github.io/react-native/)
 - [redux](http://rackt.github.io/redux/)
 - [babeljs](https://babeljs.io/)
 - [immutablejs](http://facebook.github.io/immutable-js)
@@ -57,6 +57,7 @@
 - [shortid](https://github.com/dylang/shortid) Short id generator. Url-friendly. Non-predictable.
 - [gulp](http://gulpjs.com/) Aren't NPM scripts better? [No](https://twitter.com/jaffathecake/status/700320306053935104).
 - [raven-js](https://github.com/getsentry/raven-js) Crash reporting client for [Sentry](https://getsentry.com).
+- [gulp-real-favicon](https://www.npmjs.com/package/gulp-real-favicon) Generate a multiplatform favicon with [RealFaviconGenerator](https://realfavicongenerator.net)
 - And much more. Explore the repository.
 
 ## Prerequisites
@@ -92,8 +93,9 @@ React Native: [Getting Started](https://facebook.github.io/react-native/docs/get
 - `gulp mocha-watch` continuous test running for TDD
 - `gulp eslint` eslint
 - `gulp eslint --fix` fix fixable eslint issues
-- `gulp extractMessages` extract messages for translation
-- `gulp checkMessages` check missing and unused translations
+- `gulp messages-extract` extract messages for translation
+- `gulp messages-check` check missing and unused translations
+- `gulp favicon` create multiplatform favicon
 
 ## Production Tasks
 
