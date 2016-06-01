@@ -16,6 +16,11 @@ const revive = ({ articles, article }) => {
   });
 }
 
+/*
+* @method articlesReducer
+* How it got here::Action sent with promise.  Middleware intercepted and asked if it was thennable
+* If thenable then dispatch new action when response come back.
+*/
 export default function articlesReducer(state = initialState, action) {
   if (!(state instanceof InitialState)) {
     return revive(state);
@@ -39,4 +44,3 @@ export default function articlesReducer(state = initialState, action) {
   }
   return state;
 }
-
