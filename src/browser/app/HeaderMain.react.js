@@ -47,4 +47,3 @@ class Header extends Component {
 export default connect(state => ({
   viewer: state.users.viewer
 }))(Header);
-

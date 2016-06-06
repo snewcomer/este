@@ -26,7 +26,7 @@ export default function articlesReducer(state = initialState, action) {
     return revive(state);
   }
   switch (action.type) {
-    case actions.LOADED_ARTICLES: {
+    case `${actions.LOADED_ARTICLES}_SUCCESS`: {
       const articles = action.payload;
       const articleList = articles.reduce((articles, json) => {
         return articles.set(json._id, new Article(json)) ;
@@ -36,7 +36,7 @@ export default function articlesReducer(state = initialState, action) {
       });
       return newState;
     }
-    case actions.LOADED_MAIN_ARTICLE: {
+    case `${actions.LOADED_MAIN_ARTICLE}_SUCCESS`: {
       const article = action.payload;
       const mainArticle = new Article(article) ;
       return state.set('mainArticle', mainArticle);

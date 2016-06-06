@@ -1,9 +1,8 @@
 import { combineReducers } from 'redux';
 import { reduxFields } from '../lib/redux-fields';
 import { routerReducer as routing } from 'react-router-redux';
-import { reducer as form } from 'redux-form';
 
-import auth from '../auth/reducer';
+import auth from '../auth_main/reducer';
 import config from '../config/reducer';
 import device from '../device/reducer';
 import intl from '../intl/reducer';
@@ -22,6 +21,5 @@ export default combineReducers({
   todos,
   ui,
   users,
-  articles,
-  form
+  articles
 });

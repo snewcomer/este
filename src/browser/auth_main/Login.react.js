@@ -1,4 +1,3 @@
-import { reduxForm } from 'redux-form';
 import './Login.scss';
 import Component from 'react-pure-render/component';
 import LoginError from './LoginError.react';
@@ -17,10 +16,10 @@ const messages = defineMessages({
     defaultMessage: 'your@email.com',
     id: 'auth.login.emailPlaceholder'
   },
-  // formLegend: {
-  //   defaultMessage: 'Classic XMLHttpRequest Login',
-  //   id: 'auth.login.formLegend'
-  // },
+  formLegend: {
+    defaultMessage: 'Classic XMLHttpRequest Login',
+    id: 'auth.login.formLegend'
+  },
   hint: {
     defaultMessage: 'Hint: pass1',
     id: 'auth.login.hint'
@@ -34,9 +33,9 @@ const messages = defineMessages({
 class Login extends Component {
 
   static propTypes = {
-    // auth: PropTypes.object.isRequired,
+    auth: PropTypes.object.isRequired,
     fields: PropTypes.object.isRequired,
-    // intl: intlShape.isRequired,
+    intl: intlShape.isRequired,
     location: locationShape,
     login: PropTypes.func.isRequired
   };
@@ -46,63 +45,74 @@ class Login extends Component {
     this.onFormSubmit = this.onFormSubmit.bind(this);
   }
 
-  async onFormSubmit({email, password}) {
+  async onFormSubmit(e) {
+    e.preventDefault();
+    const { login, fields } = this.props;
     try {
-      await login({email, password});
+      await login(fields.$values());
     } catch (error) {
+      debugger;
       focusInvalidField(this, error.reason);
       throw error;
     }
+    browserHistory.push('/dashboard');
     // this.redirectAfterLogin();
   }
 
-  // redirectAfterLogin() {
-  //   const { location } = this.props;
-  //   const nextPathname = location.state && location.state.nextPathname || '/';
-  //   browserHistory.replace(nextPathname);
-  // }
+  redirectAfterLogin() {
+    const { location } = this.props;
+    const nextPathname = location.state && location.state.nextPathname || '/';
+    browserHistory.replace(nextPathname);
+  }
 
   render() {
-    const { handleSubmit, fields: { email, password } } = this.props;
-    // const { intl } = this.props;
-    // const emailPlaceholder = intl.formatMessage(messages.emailPlaceholder);
-    // const passwordPlaceholder = intl.formatMessage(messages.passwordPlaceholder);
+    const { auth, fields } = this.props;
+    const { intl } = this.props;
+    const emailPlaceholder = intl.formatMessage(messages.emailPlaceholder);
+    const passwordPlaceholder = intl.formatMessage(messages.passwordPlaceholder);
 
     return (
-      <form onSubmit={handleSubmit(this.onFormSubmit)}>
-        <fieldset className="form-group">
-          <label>Email:</label>
-          <input {...email} className="form-control" />
-        </fieldset>
-        <fieldset className="form-group">
-          <label>Password:</label>
-          <input type="password" {...password} className="form-control" />
-        </fieldset>
-        <br />
-        <Button type="submit" bsStyle="info">
-          <FormattedMessage {...buttonsMessages.login} />
-        </Button>
-      </form>
+      <div className="login">
+        <form onSubmit={this.onFormSubmit}>
+          <fieldset disabled={auth.formDisabled}>
+            <fieldset className="form-group">
+              <label>Email:</label>
+              <input
+                {...fields.email}
+                maxLength="100"
+                placeholder={emailPlaceholder}
+              />
+            </fieldset>
+            <br />
+            <fieldset className="form-group">
+              <label>Password:</label>
+              <input
+                {...fields.password}
+                maxLength="300"
+                placeholder={passwordPlaceholder}
+                type="password"
+              />
+            </fieldset>
+            <br />
+            <Button type="submit" bsStyle="info">
+              <FormattedMessage {...buttonsMessages.login} />
+            </Button>
+            <LoginError error={auth.formError} />
+          </fieldset>
+        </form>
+      </div>
     );
   }
 
 }
 
-// Login = fields(Login, {
-//   path: 'auth',
-//   fields: ['email', 'password']
-// });
-
-// Login = injectIntl(Login);
-
-// export default connect(state => ({
-//   auth: state.auth
-// }), { login })(Login);
-
-// function mapStateToProps(state) {
-//   return { errorMessage: state.auth.error };
-// }
-export default reduxForm({
-  form: 'signin',
+Login = fields(Login, {
+  path: 'auth',
   fields: ['email', 'password']
-}, null, { login })(Login);
+});
+
+Login = injectIntl(Login);
+
+export default connect(state => ({
+  auth: state.auth
+}), { login })(Login);
