@@ -1,16 +1,26 @@
-import { CALL_API } from '../../middleware/api';
+import * as actions from '../actions.js';
 import { expect } from 'chai';
 
 import { loadArticles, LOADED_ARTICLES } from '../actions';
 
 describe('Action::Article', () => {
-  it('should create an article', () => {
-    let action = loadArticles();
-    expect(action[CALL_API]).to.eql({
-      method: 'get',
-      //url has not been modified by middleware
-      path: '/articles',
-      successType: LOADED_ARTICLES
-    });
+  it('should load article', () => {
+    const deps = {
+      fetch: () => {}
+    };
+    const action = actions.loadArticles()(deps);
+    const { type, payload } = action;
+    expect(type).equal(actions.LOADED_ARTICLES);
+    // expect(payload.createdAt).equal('now');
+    // expect(payload.id).equal('uid');
+    // expect(payload.title).equal('Hello');
+  });
+  it('should load main article', () => {
+    const deps = {
+      fetch: () => {}
+    };
+    const action = actions.loadMainArticle()(deps);
+    const { type, payload } = action;
+    expect(type).equal(actions.LOADED_MAIN_ARTICLE);
   });
 });

@@ -4,7 +4,7 @@ import TestUtils from 'react-addons-test-utils';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore }  from 'redux';
-import reducers from '../src/common/app/reducer';
+import reducers from '../src/common/configureReducer';
 // import chaiJQeury from 'chai-jquery'
 // const jsdom = require('jsdom');
 import jsdom from 'jsdom';
