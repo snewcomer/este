@@ -30,7 +30,7 @@ const messages = defineMessages({
   }
 });
 
-class Login extends Component {
+export class Login extends Component {
 
   static propTypes = {
     auth: PropTypes.object.isRequired,
@@ -51,12 +51,10 @@ class Login extends Component {
     try {
       await login(fields.$values());
     } catch (error) {
-      debugger;
       focusInvalidField(this, error.reason);
       throw error;
     }
     browserHistory.push('/dashboard');
-    // this.redirectAfterLogin();
   }
 
   redirectAfterLogin() {
@@ -67,9 +65,9 @@ class Login extends Component {
 
   render() {
     const { auth, fields } = this.props;
-    const { intl } = this.props;
-    const emailPlaceholder = intl.formatMessage(messages.emailPlaceholder);
-    const passwordPlaceholder = intl.formatMessage(messages.passwordPlaceholder);
+    // const { intl } = this.props;
+    // const emailPlaceholder = intl.formatMessage(messages.emailPlaceholder);
+    // const passwordPlaceholder = intl.formatMessage(messages.passwordPlaceholder);
 
     return (
       <div className="login">
@@ -80,7 +78,6 @@ class Login extends Component {
               <input
                 {...fields.email}
                 maxLength="100"
-                placeholder={emailPlaceholder}
               />
             </fieldset>
             <br />
@@ -89,13 +86,12 @@ class Login extends Component {
               <input
                 {...fields.password}
                 maxLength="300"
-                placeholder={passwordPlaceholder}
                 type="password"
               />
             </fieldset>
             <br />
             <Button type="submit" bsStyle="info">
-              <FormattedMessage {...buttonsMessages.login} />
+              Login
             </Button>
             <LoginError error={auth.formError} />
           </fieldset>
@@ -111,7 +107,7 @@ Login = fields(Login, {
   fields: ['email', 'password']
 });
 
-Login = injectIntl(Login);
+// Login = injectIntl(Login);
 
 export default connect(state => ({
   auth: state.auth
