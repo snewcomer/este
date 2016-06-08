@@ -1,8 +1,6 @@
 import './App.scss';
 import Component from 'react-pure-render/component';
-import Footer from './Footer.react';
 import FooterMain from './FooterMain.react';
-import Header from './Header.react';
 import HeaderMain from './HeaderMain.react';
 import Helmet from 'react-helmet';
 import React, { PropTypes } from 'react';
@@ -53,9 +51,9 @@ class App extends Component {
           ]}
         />
         {/* Pass location to ensure header active links are updated. */}
-        {/*<Header location={location} />*/}
+        {/* <Header location={location} /> */}
         <HeaderMain location={location} />
-        {children}
+        { children }
         <FooterMain />
       </div>
     );

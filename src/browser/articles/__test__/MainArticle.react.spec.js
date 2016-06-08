@@ -2,7 +2,7 @@ import { MainArticle } from '../MainArticle.react';
 import Article from '../Article.react';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
-import React from 'react'; 
+import React from 'react';
 
 describe('Main Article', () => {
   it('should render mainArticle', () => {
@@ -12,11 +12,11 @@ describe('Main Article', () => {
         body: 'Article\'s are cool',
     };
     const wrapper = shallow(
-      <MainArticle 
+      <MainArticle
         article={mainArticle}
       />
     );
     expect(wrapper.find(Article).length).equal(1);
+    expect(wrapper.find('.articles-main-page').length).equal(1);
   });
 });
-

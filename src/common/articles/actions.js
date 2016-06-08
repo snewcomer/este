@@ -17,7 +17,7 @@ export function loadArticles() {
       } catch (error) {
         // HTTP status to ValidationError.
         if (error.status === 401) {
-          console.log('err fetching articles')
+          console.log('err fetching articles');
         }
         throw error;
       }
@@ -26,7 +26,7 @@ export function loadArticles() {
       type: LOADED_ARTICLES,
       payload: getPromise()
     };
-  }
+  };
 }
 
 export function loadMainArticle() {
@@ -43,7 +43,7 @@ export function loadMainArticle() {
       } catch (error) {
         // HTTP status to ValidationError.
         if (error.status === 401) {
-          console.log('err fetching main article')
+          console.log('err fetching main article');
         }
         throw error;
       }
@@ -52,5 +52,5 @@ export function loadMainArticle() {
       type: LOADED_MAIN_ARTICLE,
       payload: getPromise()
     };
-  }
+  };
 }

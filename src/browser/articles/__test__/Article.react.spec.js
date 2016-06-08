@@ -23,16 +23,10 @@ describe('Article', () => {
         }}
       />
     );
-
     expect(wrapper.find('.article-title').length).to.equal(1);
     expect(wrapper.find('.article-title').text()).to.equal('It is an article');
     expect(wrapper.find('.article-body').length).to.equal(1);
     expect(wrapper.find('.article-body').text()).to.equal('this body');
     expect(wrapper.find('.article-createdAt').length).to.equal(1);
-
-    // expect(Article.componentD_idMount.calledOnce).to.equal(true);
-    // expect(deleteArticleSpy.calledOnce).equal(true);
-    // expect(deleteArticleSpy.firstCall.args[0]).equal(articleDefaultProps.article._id);
   });
 });
-

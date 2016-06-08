@@ -20,7 +20,7 @@ describe('Articles', () => {
       }
     });
     const wrapper = shallow(
-      <Articles 
+      <Articles
         articles={articleList}
       />
     );

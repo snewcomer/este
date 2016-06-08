@@ -1,12 +1,10 @@
 import './MainArticle.scss';
 import Component from 'react-pure-render/component';
-import Helmet from 'react-helmet';
 import Article from './Article.react';
-import * as todosActions from '../../common/todos/actions';
 import { loadMainArticle } from '../../common/articles/actions';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage, FormattedHTMLMessage, defineMessages, injectIntl, intlShape } from 'react-intl';
+import { defineMessages } from 'react-intl';
 
 const messages = defineMessages({
   title: {
@@ -19,7 +17,7 @@ export class MainArticle extends Component {
   componentDidMount() {
     this.props.loadMainArticle();
   }
-  render(){
+  render() {
     const { article } = this.props;
     let mainArticle;
     if (article) {
@@ -29,7 +27,7 @@ export class MainArticle extends Component {
       <div className="articles-main-page">
         {mainArticle}
       </div>
-    )
+    );
   }
 }
 
@@ -38,5 +36,3 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, { loadMainArticle })(MainArticle);
-
-

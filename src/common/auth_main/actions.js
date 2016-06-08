@@ -7,24 +7,26 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGOUT = 'LOGOUT';
 
 export function signup() {
-  const getPromise = async () => {
-    try {
-      const response = await isomorphicFetch('/api/auth/signup', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(fields)
-      });
-      return {
-        type: 'SIGNUP',
-        payload: getPromise()
-      }
-    } catch (error) {
+  return ({ fetch }) => {
+    const getPromise = async () => {
+      try {
+        const response = await fetch('/api/auth/signup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(fields)
+        });
+        return {
+          type: 'SIGNUP',
+          payload: getPromise()
+        }
+      } catch (error) {
 
+      }
     }
   }
 }
 
-export function login({email, password}) {
+export function login({ email, password }) {
   return ({ fetch }) => {
     const getPromise = async () => {
       try {

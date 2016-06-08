@@ -1,8 +1,8 @@
 import Component from 'react-pure-render/component';
 import Helmet from 'react-helmet';
 import MainArticle from './MainArticle.react';
-import React, { PropTypes } from 'react'; 
-import { FormattedHTMLMessage, defineMessages, injectIntl, intlShape } from 'react-intl';
+import React, { PropTypes } from 'react';
+import { injectIntl, defineMessages, intlShape } from 'react-intl';
 
 const messages = defineMessages({
   title: {
@@ -17,15 +17,14 @@ class Page extends Component {
   };
 
   render(){
-    const { children, intl } = this.props;
+    const { intl } = this.props;
     const title = intl.formatMessage(messages.title);
     return (
       <div className="articles-page">
         <Helmet title={title} />
         <MainArticle />
       </div>
-
-    )
+    );
   }
 }
 
