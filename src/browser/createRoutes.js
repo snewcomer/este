@@ -24,7 +24,7 @@ export default function createRoutes(getState) {
     const loggedInUser = getState().users.viewer;
     if (!loggedInUser) {
       replace({
-        pathname: '/login',
+        pathname: '/dashboard/login',
         state: { nextPathname: nextState.location.pathname }
       });
     }
@@ -36,7 +36,7 @@ export default function createRoutes(getState) {
       <Route component={Intl} path="intl" />
       <Route component={Fields} path="fields" />
       <Route component={Firebase} path="firebase" />
-      <Route component={Me} onEnter={requireAuth} path="me">
+      <Route component={Me} path="me">
         <Route component={Profile} path="profile" />
         <Route component={Settings} path="settings" />
       </Route>

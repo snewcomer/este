@@ -78,6 +78,7 @@ export class Login extends Component {
               <input
                 {...fields.email}
                 maxLength="100"
+                className="form-control"
               />
             </fieldset>
             <br />
@@ -87,6 +88,7 @@ export class Login extends Component {
                 {...fields.password}
                 maxLength="300"
                 type="password"
+                className="form-control"
               />
             </fieldset>
             <br />

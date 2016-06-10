@@ -2,6 +2,7 @@ import { ValidationError } from '../lib/validation';
 
 export const LOADED_ARTICLES = 'LOADED_ARTICLES';
 export const LOADED_MAIN_ARTICLE = 'LOADED_MAIN_ARTICLE';
+export const SUBMIT_ARTICLE = 'SUBMIT_ARTICLE';
 
 export function loadArticles() {
   return ({ fetch }) => {
@@ -53,4 +54,11 @@ export function loadMainArticle() {
       payload: getPromise()
     };
   };
+}
+
+export function submitNewArticle() {
+    return {
+      type: SUBMIT_ARTICLE,
+      payload: 'wat'
+    }
 }
