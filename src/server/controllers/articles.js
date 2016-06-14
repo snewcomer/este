@@ -16,7 +16,7 @@ exports.all = function (req, res) {
 };
 
 /**
- * Add a Topic
+ * Add a Article
  */
 exports.add = function (req, res) {
   Article.create(req.body, function (err) {
@@ -38,5 +38,25 @@ exports.main = function (req, res) {
     } else {
       console.log('Error in first query');
     }
+  });
+};
+
+/**
+ * Increment Likes
+ */
+exports.incrementLikes = function (req, res) {
+  Article.findOne({_id: req.params.body._id}, function (err, article) {
+    if (err) {
+      console.log(err);
+      res.status(400).send(err);
+    }
+    article.likes = article.likes + 1;
+    article.save((err, article) => {
+      if (err) {
+        res.send(500, {error: err});
+        return false;
+      }
+      res.send(article);
+    })
   });
 };

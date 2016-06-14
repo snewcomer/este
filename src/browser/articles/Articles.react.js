@@ -1,6 +1,6 @@
 import Component from 'react-pure-render/component';
 import Article from './Article.react';
-import { loadArticles } from '../../common/articles/actions';
+import { loadArticles, incrementLikes } from '../../common/articles/actions';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 // import { defineMessages } from 'react-intl';
@@ -28,7 +28,7 @@ export class Articles extends Component {
     return (
       <div className="articles-container">
         {list.map(article =>
-          <Article article={article} key={article._id} />
+          <Article incrementLikes={this.props.incrementLikes} article={article} key={article._id} />
         )}
       </div>
     );
@@ -39,4 +39,4 @@ const mapStateToProps = (state) => {
   return { articles: state.articles.articles };
 };
 
-export default connect(mapStateToProps, { loadArticles })(Articles);
+export default connect(mapStateToProps, { loadArticles, incrementLikes })(Articles);

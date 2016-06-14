@@ -1,28 +1,29 @@
 import * as actions from './actions';
 import Article from './article';
-import { Map, Record } from 'immutable';
+import { Map, Record, Seq } from 'immutable';
 
 const InitialState = Record({
   articles: Map(),
   mainArticle: undefined
 });
-const initialState = new InitialState;
+
+const reviveArticles = articles => Seq(articles).map(json => new Article(json)).toMap();
 
 // Note how JSON from server is revived to immutable record.
 const revive = ({ articles, article }) => {
-  return initialState.merge({
-    articles: Map(articles).map(article => new Article(article)),
+  return new InitialState({
+    articles: reviveArticles(articles),
     mainArticle: article ? new Article(article) : null
   });
 }
 
 /*
 * @method articlesReducer
+* Guessing: revive is meant to handle cases where state gets screwed up or intermediate actions not providing any state
+* new InitialState is of type Record (enfore specific set of allowed string keys w/ default values)
 */
-export default function articlesReducer(state = initialState, action) {
-  if (!(state instanceof InitialState)) {
-    return revive(state);
-  }
+export default function articlesReducer(state = new InitialState, action) {
+  if (!(state instanceof InitialState)) return revive(state);
   switch (action.type) {
     case `${actions.LOADED_ARTICLES}_SUCCESS`: {
       const articles = action.payload;
@@ -38,6 +39,9 @@ export default function articlesReducer(state = initialState, action) {
       const article = action.payload;
       const mainArticle = new Article(article) ;
       return state.set('mainArticle', mainArticle);
+    }
+    case `${actions.INCREMENT_LIKES}`: {
+      const article = action.payload;
     }
   }
   return state;

@@ -1,7 +1,7 @@
 import './MainArticle.scss';
 import Component from 'react-pure-render/component';
 import Article from './Article.react';
-import { loadMainArticle } from '../../common/articles/actions';
+import { loadMainArticle, incrementLikes } from '../../common/articles/actions';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { defineMessages } from 'react-intl';
@@ -21,7 +21,7 @@ export class MainArticle extends Component {
     const { article } = this.props;
     let mainArticle;
     if (article) {
-      mainArticle = <Article article={article} key={article._id} />
+      mainArticle = <Article incrementLikes={this.props.incrementLikes} article={article} key={article._id} />
     }
     return (
       <div className="articles-main-page">
@@ -35,4 +35,4 @@ const mapStateToProps = (state) => {
   return { article: state.articles.mainArticle };
 };
 
-export default connect(mapStateToProps, { loadMainArticle })(MainArticle);
+export default connect(mapStateToProps, { loadMainArticle, incrementLikes })(MainArticle);

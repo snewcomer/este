@@ -20,7 +20,7 @@ export default class Article extends Component {
           <p>{article.body}</p>
         </section>
         <div className="flex-container">
-          <button className="likes">&hearts; {article.likes}</button>
+          <button onClick={this.props.incrementLikes.bind(null, article._id)} className="likes">&hearts; {article.likes}</button>
           <div className="comment-wrapper">
             <Link className="button" to={`/`}>
               <span className="comment-bubble"></span>

@@ -6,6 +6,7 @@ const ArticleSchema = new mongoose.Schema({
   body: String,
   author: String,
   hot: Boolean,
+  likes: Number,
   comments: [{ body: String, date: Date }],
   count: { type: Number, min: 0 },
   createdAt: { type: Date, default: Date.now }
