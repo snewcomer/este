@@ -7,8 +7,8 @@ const Article = Record({
   title: '',
   author: '',
   hot: '',
+  likes: 0,
   comments: [],
 });
 
 export default Article;
-

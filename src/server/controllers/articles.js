@@ -45,18 +45,14 @@ exports.main = function (req, res) {
  * Increment Likes
  */
 exports.incrementLikes = function (req, res) {
-  Article.findOne({_id: req.params.body._id}, function (err, article) {
+  Article.findOne({_id: req.params.id}, function (err, article) {
     if (err) {
       console.log(err);
       res.status(400).send(err);
     }
-    article.likes = article.likes + 1;
-    article.save((err, article) => {
-      if (err) {
-        res.send(500, {error: err});
-        return false;
-      }
-      res.send(article);
+    article.likes = article.likes ? article.like + 1 : 1;
+    article.save((err, savedArticle) => {
+      res.status(200).send(article);
     })
   });
 };

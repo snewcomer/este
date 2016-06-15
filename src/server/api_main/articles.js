@@ -10,6 +10,6 @@ router.route('/all')
 
 router.route('/:id')
   .get(articles.main)
-  .patch(articles.incrementLikes);
+  .put(articles.incrementLikes);
 
 export default router;
