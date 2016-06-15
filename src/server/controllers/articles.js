@@ -50,7 +50,7 @@ exports.incrementLikes = function (req, res) {
       console.log(err);
       res.status(400).send(err);
     }
-    article.likes = article.likes ? article.like + 1 : 1;
+    article.likes = article.likes ? article.likes + 1 : 1;
     article.save((err, savedArticle) => {
       res.status(200).send(article);
     })

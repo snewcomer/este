@@ -25,8 +25,7 @@ const revive = ({ articles, article }) => {
 * new InitialState is of type Record (enfore specific set of allowed string keys w/ default values)
 */
 export default function articlesReducer(state = new InitialState, action) {
-  console.log(state instanceof InitialState)
-  // if (!(state instanceof InitialState)) return revive(state);
+  if (!(state instanceof InitialState)) return revive(state);
   switch (action.type) {
 
     case `${actions.LOADED_ARTICLES}_SUCCESS`: {

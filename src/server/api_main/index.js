@@ -16,6 +16,7 @@ connect();
 app.use(morgan('combined'));
 app.use(cors());
 app.use(bodyParser.json({type: '*/*'}));
+// app.use(bodyParser.urlencoded({ extended: false }));
 
 //middleware for particular route
 const requireAuth = passport.authenticate('jwt', { session: false });//no cookie based session
@@ -30,4 +31,3 @@ app.on('mount', () => {
 });
 
 export default app;
-
