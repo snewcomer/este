@@ -68,8 +68,8 @@ export function incrementLikes(article_id) {
   return ({ fetch }) => {
     const getPromise = async () => {
       try {
-        const response = await fetch('/api/articles/:id', {
-          method: 'PATCH',
+        const response = await fetch(`/api/articles/${article_id}`, {
+          method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({_id: article_id})
         });
@@ -83,10 +83,9 @@ export function incrementLikes(article_id) {
         // throw error;
       }
     }
-  }
-  /* getPromise returns article */
-  return {
-    type: INCREMENT_LIKES,
-    payload: getPromise()
+    return {
+      type: INCREMENT_LIKES,
+      payload: getPromise()
+    }
   }
 }

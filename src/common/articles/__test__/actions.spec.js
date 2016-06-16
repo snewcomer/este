@@ -1,7 +1,7 @@
 import * as actions from '../actions.js';
 import { expect } from 'chai';
 
-import { loadArticles, LOADED_ARTICLES } from '../actions';
+import { loadArticles, LOADED_ARTICLES, INCREMENT_LIKES } from '../actions';
 
 describe('Action::Article', () => {
   it('should load article', () => {
@@ -22,5 +22,13 @@ describe('Action::Article', () => {
     const action = actions.loadMainArticle()(deps);
     const { type, payload } = action;
     expect(type).equal(actions.LOADED_MAIN_ARTICLE);
+  });
+  it('should increment likes', () => {
+    const deps = {
+      fetch: () => {}
+    };
+    const action = actions.incrementLikes()(deps);
+    const { type, payload } = action;
+    expect(type).equal(actions.INCREMENT_LIKES);
   });
 });

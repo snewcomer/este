@@ -19,7 +19,7 @@ describe('Reducer::Article', () => {
   });
   it('returns a state with an article with incremented likes', () => {
     const payload = {"_id": "2", "title": "Wat is good", "likes": 1 };
-    const action = { type: INCREMENT_LIKES, payload: payload };
+    const action = { type: INCREMENT_LIKES+'SUCCESS', payload: payload };
     const payload_mod = {...payload, likes: 2}
     state = new InitialState({articles: Map().set(payload._id, new Article(payload_mod))});
     const newState = articleReducer(state, action);

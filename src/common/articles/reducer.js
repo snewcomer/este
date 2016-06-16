@@ -45,9 +45,13 @@ export default function articlesReducer(state = new InitialState, action) {
       return state.set('mainArticle', mainArticle);
     }
 
-    case `${actions.INCREMENT_LIKES}`: {
+    case `${actions.INCREMENT_LIKES}_SUCCESS`: {
       const article = action.payload;
-      return state.updateIn(['articles', article._id, 'likes'], val => val);
+      if (Array.isArray(article)) {
+        // var x = state.updateIn(['articles', article._id, 'likes'], val => val);
+        return;
+      }
+      return state.set('mainArticle', new Article(article));
     }
   }
   return state;
