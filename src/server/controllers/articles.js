@@ -19,12 +19,13 @@ exports.all = function (req, res) {
  * Add a Article
  */
 exports.add = function (req, res) {
-  Article.create(req.body, function (err) {
+  Article.create(req.body, function (err, article) {
     if (err) {
       console.log(err);
       res.status(400).send(err);
     }
-    res.status(200).send('OK');
+    console.log(article)
+    res.status(200).send(article);
   });
 };
 

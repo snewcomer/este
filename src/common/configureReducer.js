@@ -13,6 +13,7 @@ import { combineReducers } from 'redux';
 import { fieldsReducer as fields } from './lib/redux-fields';
 import { firebaseReducer as firebase } from './lib/redux-firebase';
 import { routerReducer as routing } from 'react-router-redux';
+import {reducer as form} from 'redux-form';
 
 // Reset app state on logout, stackoverflow.com/q/35622588/233902.
 const resetOnLogout = (reducer, initialState) => (state, action) => {
@@ -59,7 +60,8 @@ export default function configureReducer(initialState, platformReducers) {
     todos,
     ui,
     users,
-    articles
+    articles,
+    form,
   });
 
   // The power of higher-order reducers, http://slides.com/omnidan/hor

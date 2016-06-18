@@ -1,4 +1,6 @@
 import Articles from './articles/Articles.react';
+import Article from './articles/Article.react';
+import Single from './articles/Single.react';
 import MainArticle from './articles/Page.react';
 import NewArticle from './articles/NewArticle.react';
 import HomeMain from './home_main/Page.react';
@@ -43,8 +45,10 @@ export default function createRoutes(getState) {
       <Route component={Todos} path="todos" />
       <Route component={HomeMain} path="dashboard">
         <IndexRoute component={MainArticle} />
-        <Route component={Articles} path="articles" />
-        <Route component={NewArticle} path="new" />
+        <Route component={Articles} path="articles">
+        </Route>
+        <Route component={Single} path="article/:id" />
+        <Route component={NewArticle} path="articles/new" />
         <Route component={AuthMain} path="login" />
       </Route>
       <Route component={NotFound} path="*" />

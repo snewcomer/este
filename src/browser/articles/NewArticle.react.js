@@ -1,28 +1,26 @@
 import Component from 'react-pure-render/component';
 import Helmet from 'react-helmet';
-import { submitNewArticle } from '../../common/todos/actions';
+import { submitNewArticle } from '../../common/articles/actions';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import React, { PropTypes } from 'react';
-import { FormattedMessage, FormattedHTMLMessage, defineMessages, injectIntl, intlShape } from 'react-intl';
+import { FormattedMessage, FormattedHTMLMessage, defineMessages } from 'react-intl';
 import { focusInvalidField } from '../../common/lib/validation';
+import { Button } from 'react-bootstrap';
 // import { fields } from '../../common/lib/redux-fields';
 
-const messages = defineMessages({
-  title: {
-    defaultMessage: 'New Article',
-    id: 'articles.new.page.title'
-  },
-});
+// const messages = defineMessages({
+//   title: {
+//     defaultMessage: 'New Article',
+//     id: 'articles.new.page.title'
+//   },
+// });
 
 export class NewArticle extends Component {
-  static PropTypes = {
-    intl: intlShape.isRequired,
-  };
 
   async onFormSubmit({title, body}) {
     // e.preventDefault;
-    // const { fields } = this.props;
+    const { submitNewArticle } = this.props;
     try {
       await submitNewArticle({title, body});
     } catch (error) {
@@ -50,6 +48,9 @@ export class NewArticle extends Component {
                 className="form-control"
               />
           </fieldset>
+          <Button type="submit" bsStyle="info">
+            Submit New Article
+          </Button>
         </form>
       </div>
     )
@@ -60,8 +61,6 @@ export class NewArticle extends Component {
 //   path: 'new-article',
 //   fields: ['title', 'body']
 // });
-
-// NewArticle = injectIntl(NewArticle);
 
 function mapStateToProps(state) {
   return {

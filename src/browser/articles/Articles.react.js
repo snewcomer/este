@@ -3,14 +3,7 @@ import Article from './Article.react';
 import { loadArticles, incrementLikes } from '../../common/articles/actions';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-// import { defineMessages } from 'react-intl';
 
-// const messages = defineMessages({
-//   title: {
-//     defaultMessage: 'Articles',
-//     id: 'articles.all.page.title'
-//   },
-// });
 
 export class Articles extends Component {
 

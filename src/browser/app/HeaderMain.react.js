@@ -23,6 +23,11 @@ class Header extends Component {
           </Link>
         </h1>
         <ul className="menu-items">
+          <li className="menu-item">
+            <Link activeClassName="active" to="/dashboard/articles/new">
+              <FormattedMessage {...linksMessages.newArticle} />
+            </Link>
+          </li>
           {!viewer &&
             <li className="menu-item">
               <Link className="login" activeClassName="active" to="/dashboard/login">

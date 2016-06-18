@@ -9,7 +9,7 @@ export function loadArticles() {
   return ({ fetch }) => {
     const getPromise = async () => {
       try {
-        const response = await fetch('/api/articles/all', {
+        const response = await fetch('/api/articles', {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify()
@@ -57,10 +57,30 @@ export function loadMainArticle() {
   };
 }
 
-export function submitNewArticle() {
-  return {
-    type: SUBMIT_ARTICLE,
-    payload: 'wat'
+export function submitNewArticle({title, body}) {
+  return ({ fetch }) => {
+    const getPromise = async () => {
+      try {
+        const response = await fetch(`/api/articles`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({title: title, body: body})
+        });
+        console.log(response)
+        if (response.status !== 200) throw response;
+        return response.json();
+      } catch (error) {
+        // // HTTP status to ValidationError.
+        if (error.status === 401) {
+          throw new ValidationError('wrongPassword', { prop: 'password' });
+        }
+        throw error;
+      }
+    };
+    return {
+      type: SUBMIT_ARTICLE,
+      payload: getPromise()
+    }
   }
 }
 

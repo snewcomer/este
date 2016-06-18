@@ -4,7 +4,7 @@ import articles from '../controllers/articles';
 
 const router = express.Router();
 
-router.route('/all')
+router.route('')
   .get(articles.all)
   .post(articles.add);
 
