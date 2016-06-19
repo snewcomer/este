@@ -5,7 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { logout } from '../../common/auth/actions';
 
-class Logout extends Component {
+export class Logout extends Component {
 
   static propTypes = {
     logout: PropTypes.func.isRequired
