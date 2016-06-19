@@ -66,7 +66,6 @@ export function submitNewArticle({title, body}) {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({title: title, body: body})
         });
-        console.log(response)
         if (response.status !== 200) throw response;
         return response.json();
       } catch (error) {

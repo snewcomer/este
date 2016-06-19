@@ -3,6 +3,7 @@ import Helmet from 'react-helmet';
 import { submitNewArticle } from '../../common/articles/actions';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
+import { browserHistory } from 'react-router';
 import React, { PropTypes } from 'react';
 import { FormattedMessage, FormattedHTMLMessage, defineMessages } from 'react-intl';
 import { focusInvalidField } from '../../common/lib/validation';
@@ -27,6 +28,7 @@ export class NewArticle extends Component {
       focusInvalidField(this, error.reason);
       throw error;
     }
+    browserHistory.push('/dashboard/articles');
   }
 
   render(){
@@ -38,14 +40,14 @@ export class NewArticle extends Component {
             <label>Your Informative Title:</label>
             <input
               {...fields.title}
-              className="form-control"
+              className="form-control t-new-article-title"
             />
           </fieldset>
           <fieldset className="form-group">
             <label>Your Awesome Content:</label>
             <textarea
                 {...fields.body}
-                className="form-control"
+                className="form-control t-new-article-body"
               />
           </fieldset>
           <Button type="submit" bsStyle="info">

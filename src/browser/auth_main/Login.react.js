@@ -71,25 +71,31 @@ export class Login extends Component {
           <fieldset disabled={auth.formDisabled}>
             <fieldset className="form-group">
               <label>Email:</label>
-              <input
-                {...fields.email}
-                maxLength="100"
-                className="form-control"
-              />
+              <FormattedMessage {...messages.emailPlaceholder}>
+                {message => <input
+                  {...fields.email}
+                  maxLength="100"
+                  className="form-control"
+                  placeholder={message}
+                />}
+              </FormattedMessage>
             </fieldset>
             <br />
             <fieldset className="form-group">
               <label>Password:</label>
-              <input
-                {...fields.password}
-                maxLength="300"
+              <FormattedMessage {...messages.passwordPlaceholder}>
+                {message => <input
+                  {...fields.password}
+                  maxLength="100"
+                  className="form-control"
                 type="password"
-                className="form-control"
-              />
+                  placeholder={message}
+                />}
+              </FormattedMessage>
             </fieldset>
             <br />
             <Button type="submit" bsStyle="info">
-              Login
+              <FormattedMessage {...buttonsMessages.login} />
             </Button>
             <LoginError error={auth.formError} />
           </fieldset>

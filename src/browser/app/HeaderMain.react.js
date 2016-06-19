@@ -2,6 +2,7 @@ import './HeaderMain.scss';
 import Component from 'react-pure-render/component';
 import React, { PropTypes } from 'react';
 import linksMessages from '../../common/app/linksMessages';
+import Logout from '../auth_main/Logout.react';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
@@ -37,9 +38,7 @@ class Header extends Component {
           }
           {viewer &&
             <li className="menu-item">
-              <Link className="logout" activeClassName="active" to="/dashboard/logout">
-                <FormattedMessage {...linksMessages.logout} />
-              </Link>
+              <Logout />
             </li>
           }
         </ul>
