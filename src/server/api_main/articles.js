@@ -12,4 +12,7 @@ router.route('/:id')
   .get(articles.main)
   .put(articles.incrementLikes);
 
+router.route('/:id/add-comment')
+  .put(articles.addComment);
+
 export default router;

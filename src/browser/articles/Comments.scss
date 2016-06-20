@@ -1,0 +1,28 @@
+.comments {
+  padding: 2rem;
+  .comment-body {
+    
+  }
+}
+.comment {
+  border-bottom: 1px solid lightgrey;
+  padding: 0.5rem 0;
+  p {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+  strong {
+    color: blue;
+    margin-right: 5px;
+  }
+}
+.remove-comment {
+  background: none;
+  border: 0;
+  line-height: 1;
+  opacity: 0;
+  &:hover {
+    color: red;
+    opacity: 1;
+  }
+}

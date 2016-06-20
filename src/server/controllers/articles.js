@@ -54,6 +54,21 @@ exports.incrementLikes = function (req, res) {
     article.likes = article.likes ? article.likes + 1 : 1;
     article.save((err, savedArticle) => {
       res.status(200).send(article);
-    })
+    });
+  });
+};
+
+exports.addComment = function (req, res) {
+  console.log(req.params)
+  Article.findOne({_id: req.params.id}, function (err, article) {
+    if (err) {
+      console.log(err);
+      res.status(400).send(err);
+    }
+    const { comment } = req.body;
+    article.comments = article.comments ? article.comments.push(comment) : [comment];
+    article.save((err, savedArticle) => {
+      res.status(200).send(article);
+    });
   });
 };

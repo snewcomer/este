@@ -8,6 +8,7 @@ import favicon from '../../common/app/favicon';
 import start from '../../common/app/start';
 import { connect } from 'react-redux';
 import { locationShape } from 'react-router';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 // v4-alpha.getbootstrap.com/getting-started/introduction/#starter-template
 const bootstrap4Metas = [
@@ -52,9 +53,12 @@ class App extends Component {
         />
         {/* Pass location to ensure header active links are updated. */}
         {/* <Header location={location} /> */}
-        <HeaderMain location={location} />
-        { children }
-        <FooterMain />
+
+          <HeaderMain location={location} />
+          <MuiThemeProvider>
+          { children }
+          </MuiThemeProvider>
+          <FooterMain />
       </div>
     );
   }

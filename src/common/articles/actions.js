@@ -3,6 +3,7 @@ import { ValidationError } from '../lib/validation';
 export const LOADED_ARTICLES = 'LOADED_ARTICLES';
 export const LOADED_MAIN_ARTICLE = 'LOADED_MAIN_ARTICLE';
 export const SUBMIT_ARTICLE = 'SUBMIT_ARTICLE';
+export const SUBMIT_COMMENT = 'SUBMIT_COMMENT';
 export const INCREMENT_LIKES = 'INCREMENT_LIKES';
 
 export function loadArticles() {
@@ -104,6 +105,32 @@ export function incrementLikes(article_id) {
     }
     return {
       type: INCREMENT_LIKES,
+      payload: getPromise()
+    }
+  }
+}
+
+export function submitComment({body, id}) {
+  return ({ fetch }) => {
+    const getPromise = async () => {
+      try {
+        const response = await fetch(`/api/articles/${id}/add-comment`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({_id: id})
+        });
+        if (response.status !== 200) throw response;
+        return response.json();
+      } catch (error) {
+        // // HTTP status to ValidationError.
+        // if (error.status === 401) {
+        //   throw new ValidationError('wrongPassword', { prop: 'password' });
+        // }
+        // throw error;
+      }
+    }
+    return {
+      type: SUBMIT_COMMENT,
       payload: getPromise()
     }
   }

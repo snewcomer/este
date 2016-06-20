@@ -14,7 +14,9 @@ export default class Article extends Component {
     const { article } = this.props;
     return(
       <div className="article-single">
-        <h2 className="article-title">{article.title}</h2>
+        <Link to={`dashboard/article/${article._id}`}>
+          <h2 className="article-title">{article.title}</h2>
+        </Link>
         <span className="article-createdAt">{article.createdAt}</span>
         <section className="article-body">
           <p>{article.body}</p>
