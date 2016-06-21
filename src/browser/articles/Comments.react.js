@@ -20,7 +20,6 @@ export class Comments extends Component {
     viewer: PropTypes.object
   };
   async onRemoveComment(comment_id) {
-    debugger;
     const { removeComment } = this.props;
     const { id } = this.props.params;
     try {
@@ -41,11 +40,12 @@ export class Comments extends Component {
       </div>
     )
   }
-  async onCommentSubmit({body}) {
+  async onCommentSubmit({ body }) {
     const { submitComment } = this.props;
     const { id } = this.props.params;
+    // const { displayName:author='' } = this.props.viewer;
     try {
-      await submitComment({body, id});
+      await submitComment({body, author: 'scott', id});
     } catch (error) {
       return error;
     }

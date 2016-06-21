@@ -1,14 +1,12 @@
 import mongoose from 'mongoose';
 
 const CommentSchema = new mongoose.Schema({
-  id: String,
   author: String,
   body: String,
   createdAt: { type: Date, default: Date.now }
 });
 
 const ArticleSchema = new mongoose.Schema({
-  id: String,
   title: String,
   body: String,
   author: String,

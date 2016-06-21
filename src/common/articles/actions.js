@@ -118,7 +118,7 @@ export function submitComment({body, author, id}) {
         const response = await fetch(`/api/articles/${id}/add-comment`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ _id: id, comment: { author: displayName, body: body } })
+          body: JSON.stringify({ comment: { author, body } })
         });
         if (response.status !== 200) throw response;
         return response.json();
@@ -138,14 +138,13 @@ export function submitComment({body, author, id}) {
 }
 
 export function removeComment({ id, comment_id }) {
-  debugger;
   return ({ fetch }) => {
     const getPromise = async () => {
       try {
         const response = await fetch(`/api/articles/${id}/remove-comment`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ _id: id, comment_id: comment_id })
+          body: JSON.stringify({ comment_id: comment_id })
         });
         if (response.status !== 200) throw response;
         return response.json();

@@ -80,7 +80,7 @@ exports.removeComment = function (req, res) {
     }
     const { comment_id } = req.body;
     article.comments = article.comments.filter((comment) => {
-      comment._id !== comment_id;
+      return comment._id.toString() !== comment_id;
     });
     article.save((err, savedArticle) => {
       res.status(200).send(article);
