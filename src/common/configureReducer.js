@@ -8,15 +8,15 @@ import ui from './ui/reducer';
 import users from './users/reducer';
 import articles from './articles/reducer';
 import { LOGOUT } from './auth/actions';
-import { UPDATE_APP_STATE_FROM_STORAGE_SUCCESS } from './app/actions';
 import { combineReducers } from 'redux';
 import { fieldsReducer as fields } from './lib/redux-fields';
 import { firebaseReducer as firebase } from './lib/redux-firebase';
 import { routerReducer as routing } from 'react-router-redux';
 import {reducer as form} from 'redux-form';
+import { updateStateOnStorageLoad } from './configureStorage';
 
-// Reset app state on logout, stackoverflow.com/q/35622588/233902.
-const resetOnLogout = (reducer, initialState) => (state, action) => {
+const resetStateOnLogout = (reducer, initialState) => (state, action) => {
+  // Reset app state on logout, stackoverflow.com/q/35622588/233902.
   if (action.type === LOGOUT) {
     // Delete whole app state except some fixtures and routing state.
     state = {
@@ -24,24 +24,6 @@ const resetOnLogout = (reducer, initialState) => (state, action) => {
       intl: initialState.intl,
       routing: state.routing // Note routing state has to be reused.
     };
-  }
-  return reducer(state, action);
-};
-
-// Update app state from localStorage / AsyncStorage.
-const updateAppStateFromStorage = reducer => (state, action) => {
-  if (action.type === UPDATE_APP_STATE_FROM_STORAGE_SUCCESS) {
-    const appStateFromStorage = action.payload;
-    Object.keys(appStateFromStorage).forEach(appFeature => {
-      if (!state[appFeature]) return;
-      state = {
-        ...state,
-        [appFeature]: {
-          ...state[appFeature].toJS(),
-          ...appStateFromStorage[appFeature]
-        }
-      };
-    });
   }
   return reducer(state, action);
 };
@@ -65,8 +47,8 @@ export default function configureReducer(initialState, platformReducers) {
   });
 
   // The power of higher-order reducers, http://slides.com/omnidan/hor
-  reducer = resetOnLogout(reducer, initialState);
-  reducer = updateAppStateFromStorage(reducer);
+  reducer = resetStateOnLogout(reducer, initialState);
+  reducer = updateStateOnStorageLoad(reducer);
 
   return reducer;
 }
