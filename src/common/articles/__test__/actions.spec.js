@@ -31,4 +31,20 @@ describe('Action::Article', () => {
     const { type, payload } = action;
     expect(type).equal(actions.INCREMENT_LIKES);
   });
+  it('should append to comments array', () => {
+    const deps = {
+      fetch: () => {}
+    };
+    const action = actions.submitComment({body: 'wat'})(deps);
+    const { type, payload } = action;
+    expect(type).equal(actions.SUBMIT_COMMENT);
+  });
+  it('should remove from comments array', () => {
+    const deps = {
+      fetch: () => {}
+    };
+    const action = actions.removeComment({body: 'wat'})(deps);
+    const { type, payload } = action;
+    expect(type).equal(actions.REMOVE_COMMENT);
+  });
 });

@@ -9,6 +9,8 @@ import start from '../../common/app/start';
 import { connect } from 'react-redux';
 import { locationShape } from 'react-router';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import { deepOrange500 } from 'material-ui/styles/colors';
 
 // v4-alpha.getbootstrap.com/getting-started/introduction/#starter-template
 const bootstrap4Metas = [
@@ -22,6 +24,12 @@ const bootstrap4Metas = [
     content: 'ie=edge'
   }
 ];
+
+const muiTheme = getMuiTheme({
+  palette: {
+    accent1Color: deepOrange500,
+  },
+});
 
 class App extends Component {
 
@@ -55,7 +63,7 @@ class App extends Component {
         {/* <Header location={location} /> */}
 
           <HeaderMain location={location} />
-          <MuiThemeProvider>
+          <MuiThemeProvider muiTheme={muiTheme}>
           { children }
           </MuiThemeProvider>
           <FooterMain />

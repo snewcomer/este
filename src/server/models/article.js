@@ -1,5 +1,12 @@
 import mongoose from 'mongoose';
 
+const CommentSchema = new mongoose.Schema({
+  id: String,
+  author: String,
+  body: String,
+  createdAt: { type: Date, default: Date.now }
+});
+
 const ArticleSchema = new mongoose.Schema({
   id: String,
   title: String,
@@ -7,8 +14,7 @@ const ArticleSchema = new mongoose.Schema({
   author: String,
   hot: Boolean,
   likes: Number,
-  comments: [{ user: String, body: String, date: Date }],
-  count: { type: Number, min: 0 },
+  comments: [CommentSchema],
   createdAt: { type: Date, default: Date.now }
 });
 

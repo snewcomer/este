@@ -59,14 +59,29 @@ exports.incrementLikes = function (req, res) {
 };
 
 exports.addComment = function (req, res) {
-  console.log(req.params)
   Article.findOne({_id: req.params.id}, function (err, article) {
     if (err) {
       console.log(err);
       res.status(400).send(err);
     }
     const { comment } = req.body;
-    article.comments = article.comments ? article.comments.push(comment) : [comment];
+    article.comments = article.comments ? article.comments.concat(comment) : [comment];
+    article.save((err, savedArticle) => {
+      res.status(200).send(article);
+    });
+  });
+};
+
+exports.removeComment = function (req, res) {
+  Article.findOne({_id: req.params.id}, function (err, article) {
+    if (err) {
+      console.log(err);
+      res.status(400).send(err);
+    }
+    const { comment_id } = req.body;
+    article.comments = article.comments.filter((comment) => {
+      comment._id !== comment_id;
+    });
     article.save((err, savedArticle) => {
       res.status(200).send(article);
     });

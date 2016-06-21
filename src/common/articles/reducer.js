@@ -46,7 +46,6 @@ export default function articlesReducer(state = new InitialState, action) {
     }
 
     case `${actions.SUBMIT_ARTICLE}_SUCCESS`: {
-      console.log(action)
       const article = action.payload;
       return state.update('articles', article => article.set(article.id, article));
     }
@@ -60,6 +59,13 @@ export default function articlesReducer(state = new InitialState, action) {
     }
 
     case `${actions.SUBMIT_COMMENT}_SUCCESS`: {
+      const article = action.payload;
+      return state.updateIn(['articles', article._id, 'comments'], val => {
+        return article.comments;
+      });
+    }
+
+    case `${actions.REMOVE_COMMENT}_SUCCESS`: {
       const article = action.payload;
       return state.updateIn(['articles', article._id, 'comments'], val => {
         return article.comments;

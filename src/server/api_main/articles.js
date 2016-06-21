@@ -15,4 +15,7 @@ router.route('/:id')
 router.route('/:id/add-comment')
   .put(articles.addComment);
 
+router.route('/:id/remove-comment')
+  .put(articles.removeComment);
+
 export default router;
